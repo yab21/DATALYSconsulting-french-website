@@ -2,9 +2,6 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { Button } from "@nextui-org/button"
-import Link from "next/link"
-import { useRef } from "react"
 
 const checkIcon = (
   <svg width="16" height="13" viewBox="0 0 16 13" className="fill-current">
@@ -22,121 +19,120 @@ const List = ({ text }: { text: string }) => (
 )
 
 const AboutSectionThree = () => {
-  const scrollRef = useRef<HTMLDivElement>(null)
-
   return (
-    <section id="about" className="pt-16 md:pt-20 lg:pt-28">
-      <div className="container">
-        <div className="border-b border-body-color/[.15] pb-16 dark:border-white/[.15] md:pb-20 lg:pb-28">
-          <div className="-mx-4 flex flex-wrap items-center">
-            {/* Image Section with Animation */}
-            <div className="w-full px-4 lg:w-1/2 mb-10 lg:mb-0" ref={scrollRef}>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ root: scrollRef }}
-                transition={{ duration: 0.5 }}
-                className="relative mx-auto max-w-[550px] rounded-full bg-[#294666] p-2 shadow-lg"
-              >
-                <Image
-                  src="/images/about/pppexels.jpg"
-                  alt="About Us Image"
-                  width={600}
-                  height={600}
-                  className="rounded-full"
-                />
-              </motion.div>
-            </div>
-
-            {/* Text Section */}
-            <div className="w-full px-4 text-start lg:w-1/2" ref={scrollRef}>
-              {/* <div className="absolute bottom-20 hidden w-full px-4 md:block">
-                <div className="mx-auto max-w-[700px]">
-                  <img
-                    src="/images/logo/logo.png"
-                    alt="Background Logo"
-                    width={700}
-                    height={700}
-                    className="opacity-10"
-                  />
-                </div>
-              </div> */}
-
-              <motion.h2
-                initial={{ x: -50, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                // viewport={{ root: scrollRef }}
-                viewport={{ once: false }}
-                transition={{ duration: 0.5 }}
-                className="font-Title mb-4 text-3xl font-bold text-black dark:text-white sm:text-4xl md:text-[45px]"
-              >
-                À propos de nous
-              </motion.h2>
-
-              <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: false }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                className="text-justify text-base font-light leading-relaxed text-slate-300 [word-spacing:-1.2px] md:text-xl"
-              >
-                Fondé en 2023, par des Consultants engagés et passionnés de la
-                Digitalisation, Datalys Consulting est une Entreprise de Service
-                IT qui apporte une expertise réinventée. Nous sommes spécialisés
-                dans le Cloud, l’Infrastructure IT et les réseaux & sécurités :
-                les sujets clés impactant le monde de l’IT et de la
-                Digitalisation.
-              </motion.p>
-
-              <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: false }}
-                transition={{ delay: 0.4, duration: 0.5 }}
-                className="mt-2 text-justify text-base font-light leading-relaxed text-slate-300 [word-spacing:-1.2px] md:text-xl"
-              >
-                La transformation, la gestion d'infrastructures IT & cloud,
-                l'optimisation énergétique des Data Centers ainsi que le
-                déploiement efficace des systèmes de réseau et sécurité
-                informatique font partie de nos compétences de pointe. Chez
-                DATALYS, notre engagement est d'offrir des solutions innovantes
-                qui propulsent votre entreprise vers l'avenir numérique et dans
-                l’atteinte de vos objectifs stratégiques.
-              </motion.p>
-
-              <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: false }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-                className="mt-2 text-justify text-base font-light leading-relaxed text-slate-300 [word-spacing:-1.2px] md:text-xl"
-              >
-                Chez DATALYS, l'innovation est au coeur de notre ADN. Nous
-                proposons à nos clients des solutions de nouvelles générations
-                ainsi que des bonnes pratiques pour leur fournir un avantage
-                concurrentiel dans un monde en constante évolution.
-              </motion.p>
-
-              {/* Call to Action Button */}
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: false }}
-                transition={{ delay: 0.8, duration: 0.5 }}
-                className="mt-4 flex-col items-center justify-start gap-2 space-y-4 sm:flex-row sm:space-y-0"
-              >
-                <div>
-                  <Link
-                    href="/apropos"
-                    className="inline-block rounded-sm bg-black px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-black/90 dark:bg-white/10 dark:text-white dark:hover:bg-white/5"
-                  >
-                    Voir plus
-                  </Link>
-                </div>
-              </motion.div>
-            </div>
+    <section
+      id="about"
+      className="w-full bg-gradient-to-b from-white via-slate-50 to-white py-16 md:py-24"
+    >
+      <div className="mx-auto flex max-w-6xl flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white/70 shadow-xl backdrop-blur-md md:flex-row">
+        {/* Colonne image avec effet de fondu/dégradé */}
+        <div className="relative flex min-h-[340px] w-full items-stretch md:min-h-[420px] md:w-1/2">
+          <div className="h-full w-full">
+            <Image
+              src="/images/about/8033207.jpg"
+              alt="Datalys équipe"
+              width={800}
+              height={600}
+              className="h-full w-full object-cover [mask-image:linear-gradient(to_right,black_70%,transparent_100%)] [mask-repeat:no-repeat] [mask-size:100%_100%] md:[mask-image:linear-gradient(to_right,black_70%,transparent_100%)]"
+              loading="lazy"
+              priority={false}
+            />
+            {/* Overlay digital très discret (optionnel) */}
+            <svg
+              className="pointer-events-none absolute inset-0 h-full w-full"
+              viewBox="0 0 800 600"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <defs>
+                <linearGradient
+                  id="digitalBlue"
+                  x1="0"
+                  y1="0"
+                  x2="800"
+                  y2="600"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stopColor="#38bdf8" stopOpacity="0.10" />
+                  <stop offset="1" stopColor="#6366f1" stopOpacity="0.06" />
+                </linearGradient>
+              </defs>
+              <line
+                x1="100"
+                y1="0"
+                x2="700"
+                y2="600"
+                stroke="url(#digitalBlue)"
+                strokeWidth="1.5"
+              />
+              <line
+                x1="0"
+                y1="200"
+                x2="800"
+                y2="400"
+                stroke="url(#digitalBlue)"
+                strokeWidth="1"
+              />
+              <circle
+                cx="180"
+                cy="120"
+                r="4"
+                fill="#f5c034"
+                fillOpacity="0.4"
+              />
+              <circle
+                cx="650"
+                cy="480"
+                r="3"
+                fill="#38bdf8"
+                fillOpacity="0.3"
+              />
+            </svg>
           </div>
         </div>
+        {/* Colonne texte sur fond blanc translucide, sans card */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="flex w-full flex-col justify-center bg-white/90 p-8 backdrop-blur-lg md:w-1/2 md:p-12"
+        >
+          <h2 className="mb-6 text-left font-sans text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
+            À propos de{" "}
+            <span className="text-[#f5c034]">Datalys Consulting</span>
+          </h2>
+          <p className="mb-4 text-justify text-base font-normal text-slate-700 md:text-lg">
+            Fondée en 2023 par des consultants passionnés,{" "}
+            <strong>DATALYS</strong> Consulting est une Entreprise de Service IT
+            qui apporte une expertise réinventée. Nous sommes spécialisés dans
+            le <strong>Cloud</strong>, l&apos;Infrastructure IT et les{" "}
+            <strong>réseaux &amp; sécurités</strong>, sujets clés du monde de la
+            Digitalisation.
+          </p>
+          <p className="mb-4 text-justify text-base font-normal text-slate-700 md:text-lg">
+            Transformation digitale, gestion d&apos;infrastructures IT &amp;
+            cloud, optimisation énergétique des Data Centers, déploiement
+            efficace des systèmes de réseau et sécurité informatique :{" "}
+            <strong>DATALYS</strong> s&apos;engage à propulser votre entreprise
+            vers l&apos;avenir numérique.
+          </p>
+          <p className="mb-8 text-justify text-base font-normal text-slate-700 md:text-lg">
+            L&apos;innovation est au cœur de notre ADN. Nous proposons à nos
+            clients des solutions de nouvelle génération et des bonnes pratiques
+            pour leur offrir un avantage concurrentiel durable.
+          </p>
+          <div className="flex w-full justify-start">
+            <a
+              href="/apropos"
+              className="inline-block rounded-full bg-[#f5c034] px-8 py-4 text-base font-semibold text-white shadow-lg duration-300 ease-in-out hover:scale-105 hover:bg-[#eab308] focus:outline-none focus:ring-2 focus:ring-[#f5c034]/60 focus:ring-offset-2"
+              aria-label="En savoir plus sur Datalys Consulting"
+            >
+              Voir plus
+            </a>
+          </div>
+        </motion.div>
       </div>
     </section>
   )
