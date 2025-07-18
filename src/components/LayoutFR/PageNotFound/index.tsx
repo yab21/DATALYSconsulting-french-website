@@ -1,7 +1,5 @@
 "use client"
 
-import { Button } from "@nextui-org/button"
-import Link from "next/link"
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
 
@@ -12,171 +10,244 @@ const PageNotFound = () => {
     {
       url: "/images/slider/new/infrastructure.jpg",
       title: "Infrastructure & systèmes",
+      description: "Solutions d'infrastructure modernes",
     },
     {
       url: "/images/slider/new/datacenter1.jpg",
       title: "Data Center",
+      description: "Centres de données haute performance",
     },
     {
       url: "/images/slider/new/energie.jpg",
       title: "Énergie",
+      description: "Solutions énergétiques durables",
     },
     {
       url: "/images/slider/Cloud_Accueil.PNG",
       title: "Cloud",
+      description: "Services cloud innovants",
     },
     {
       url: "/images/slider/new/reseau&securite2.jpg",
       title: "Réseau & Sécurité",
-    },
-  ]
-
-  const slides = [
-    {
-      url: "/images/404/1.webp",
-      title: "Infrastructure & System",
-    },
-    {
-      url: "/images/404/2.webp",
-      title: "Network & Security",
-    },
-    {
-      url: "/images/404/3.webp",
-      title: "Data Center & Energy",
+      description: "Sécurité réseau avancée",
     },
   ]
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % imageData.length)
-    }, 3000)
+    }, 4000)
     return () => clearInterval(timer)
   }, [])
 
   return (
-    <main className="min-h-screen mt-10 md:-mt-6">
-      <div className="container mx-auto px-4 py-16">
-        <div className="mx-auto max-w-4xl text-center">
+    <main className="relative -mt-10 min-h-screen overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-900">
+      {/* Particules de fond */}
+      <div className="absolute inset-0 overflow-hidden">
+        {Array.from({ length: 25 }, (_, i) => (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            key={i}
+            className="absolute h-1 w-1 rounded-full bg-[#f5c034]/20"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -40, -80],
+              opacity: [0, 1, 0],
+              scale: [0, 1, 0],
+              x: [0, Math.random() * 20 - 10],
+            }}
+            transition={{
+              duration: Math.random() * 6 + 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: Math.random() * 3,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Ondes holographiques */}
+      <div className="absolute inset-0 overflow-hidden">
+        {Array.from({ length: 3 }, (_, i) => (
+          <motion.div
+            key={`wave-${i}`}
+            className="absolute inset-0 opacity-5"
+            style={{
+              background: `radial-gradient(circle at ${30 + i * 25}% ${40 + i * 20}%, #f5c034 0%, transparent 60%)`,
+            }}
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.05, 0.15, 0.05],
+            }}
+            transition={{
+              duration: 10 + i * 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 3,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Grille holographique */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="h-full w-full bg-[linear-gradient(rgba(245,192,52,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(245,192,52,0.1)_1px,transparent_1px)] bg-[size:50px_50px]" />
+      </div>
+
+      <div className="container relative z-10 mx-auto max-w-7xl px-4 py-16">
+        <div className="mx-auto max-w-6xl text-center">
+          {/* Section titre principale */}
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-16"
+            transition={{ duration: 1, delay: 0.2 }}
+            className="mb-20"
           >
-            {/* <h2 className="mb-6 bg-gradient-to-r from-primary to-[#f5c034] bg-clip-text text-6xl font-bold text-transparent">
-              404
-            </h2> */}
-            <h3 className="text-2xl lg:text-4xl font-semibold text-gray-700 dark:text-gray-300">
-              Bientôt disponible
-            </h3>
-            {/* <p className="mb-8 text-xl text-gray-600 dark:text-gray-400">
-              {"Nous y travaillons pour vous offrir une meilleure expérience."}
-            </p> */}
+            <motion.h1
+              className="mb-6 text-3xl font-bold text-white sm:text-4xl md:text-5xl lg:text-6xl"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.4 }}
+            >
+              <span className="bg-gradient-to-r from-[#f5c034] via-[#eab308] to-[#f5c034] bg-clip-text text-transparent">
+                Bientôt
+              </span>
+              <br />
+              <span className="text-white">Disponible</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="mx-auto max-w-2xl text-xl text-slate-300 md:text-2xl"
+            >
+              Nous travaillons actuellement sur une expérience exceptionnelle
+              pour vous. Découvrez nos services en attendant.
+            </motion.p>
           </motion.div>
 
-          {/* <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="mb-12"
+          {/* Section services avec carousel */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1.0 }}
+            className="mb-16"
           >
-            <Button
-              className="bg-[#f5c034] hover:bg-[#f5c034]/90 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 flex items-center gap-2"
-              as={Link}
-              href="/"
-            >
-              Retour à l&apos;accueil
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </Button>
-          </motion.div> */}
-
-          {/* Image Slider */}
-          <div className="relative">
-            <div className="flex flex-wrap justify-center gap-6">
-              {imageData.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{
-                    opacity: currentImage === index ? 1 : 0.5,
-                    scale: currentImage === index ? 1 : 0.8,
-                  }}
-                  transition={{ duration: 0.5 }}
-                  className="relative my-4 md:py-0"
-                >
-                  <div className="h-32 w-32 overflow-hidden rounded-full border-4 border-white shadow-lg dark:border-gray-700 md:h-40 md:w-40">
-                    <img
-                      src={item.url}
-                      alt={item.title}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                  {currentImage === index && (
-                    <>
-                      <motion.div
-                        className="absolute -inset-2 rounded-full border-2 border-[#f5c034]"
-                        animate={{ rotate: 360 }}
-                        transition={{
-                          duration: 8,
-                          repeat: Infinity,
-                          ease: "linear",
-                        }}
+            {/* Carousel d'images */}
+            <div className="relative">
+              <div className="flex flex-wrap justify-center gap-8">
+                {imageData.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.5, y: 50 }}
+                    animate={{
+                      opacity: currentImage === index ? 1 : 0.3,
+                      scale: currentImage === index ? 1 : 0.7,
+                      y: currentImage === index ? 0 : 20,
+                    }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    className="group relative"
+                  >
+                    {/* Image principale */}
+                    <motion.div
+                      className="relative h-48 w-48 overflow-hidden rounded-2xl border-4 border-white/20 shadow-2xl backdrop-blur-sm md:h-56 md:w-56"
+                      whileHover={{ scale: 1.05, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <img
+                        src={item.url}
+                        alt={item.title}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="absolute -bottom-12 left-1/2 -translate-x-1/2 transform whitespace-nowrap"
-                      >
-                        <span className="rounded-full bg-[#f5c034] px-4 py-2 text-sm font-medium text-white shadow-lg">
-                          {item.title}
-                        </span>
-                      </motion.div>
-                    </>
-                  )}
-                </motion.div>
-              ))}
-            </div>
-          </div>
-          
-          {/* Espace en bas pour équilibrer avec l'espace en haut */}
-          <div className="h-16"></div>
 
-          {/* Decorative Elements */}
-          <div className="absolute left-0 top-0 -z-10 h-full w-full overflow-hidden">
-            {[...Array(20)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute rounded-full bg-[#f5c034]/10"
-                style={{
-                  width: Math.random() * 50 + 10,
-                  height: Math.random() * 50 + 10,
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                }}
-                animate={{
-                  y: [0, Math.random() * 100 - 50],
-                  opacity: [0.5, 1, 0.5],
-                }}
-                transition={{
-                  duration: Math.random() * 5 + 3,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              />
-            ))}
-          </div>
+                      {/* Overlay gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
+                      {/* Anneau holographique pour l'image active */}
+                      {currentImage === index && (
+                        <motion.div
+                          className="absolute -inset-2 rounded-2xl border-2 border-[#f5c034]"
+                          animate={{ rotate: 360 }}
+                          transition={{
+                            duration: 8,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
+                        />
+                      )}
+                    </motion.div>
+
+                    {/* Titre et description */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{
+                        opacity: currentImage === index ? 1 : 0.7,
+                        y: currentImage === index ? 0 : 10,
+                      }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                      className="absolute -bottom-16 left-1/2 -translate-x-1/2 transform text-center"
+                    >
+                      <div className="rounded-xl bg-gradient-to-r from-[#f5c034]/90 to-[#eab308]/90 px-6 py-3 shadow-lg backdrop-blur-sm">
+                        <h3 className="text-lg font-bold text-white">
+                          {item.title}
+                        </h3>
+                        <p className="text-sm text-white/90">
+                          {item.description}
+                        </p>
+                      </div>
+                    </motion.div>
+
+                    {/* Particules décoratives */}
+                    {currentImage === index && (
+                      <>
+                        <motion.div
+                          className="absolute -right-2 -top-2 h-4 w-4 rounded-full bg-[#f5c034]/60"
+                          animate={{
+                            scale: [1, 1.5, 1],
+                            opacity: [0.5, 1, 0.5],
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
+                        />
+                        <motion.div
+                          className="absolute -bottom-2 -left-2 h-3 w-3 rounded-full bg-[#eab308]/60"
+                          animate={{
+                            scale: [1, 1.3, 1],
+                            opacity: [0.5, 1, 0.5],
+                          }}
+                          transition={{
+                            duration: 1.5,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: 1,
+                          }}
+                        />
+                      </>
+                    )}
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Message de fin */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 2.0 }}
+            className="mt-16"
+          >
+            <p className="text-lg text-slate-400">
+              Restez connecté pour découvrir notre boutique exceptionnelle !
+            </p>
+          </motion.div>
         </div>
       </div>
     </main>

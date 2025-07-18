@@ -195,25 +195,12 @@ const Header = () => {
 
   // Fonction pour vérifier si un lien est actif
   const isLinkActive = (path) => {
+    // Pour la page d'accueil, vérifier l'exactitude
     if (path === "/") {
-      return usePathName === path
+      return usePathName === "/"
     }
-    if (path === "/apropos") {
-      return usePathName === path
-    }
-    if (path === "/espace-entreprise") {
-      return usePathName === path
-    }
-    if (path === "/boutique") {
-      return usePathName === path
-    }
-    if (path === "/evenements") {
-      return usePathName === path
-    }
-    if (path === "/contact") {
-      return usePathName === path
-    }
-    return usePathName.startsWith(path)
+    // Pour les autres pages, vérifier l'exactitude ou le début du chemin
+    return usePathName === path || usePathName.startsWith(path + "/")
   }
 
   // Fonction pour vérifier si un sous-lien est actif
@@ -740,7 +727,7 @@ const Header = () => {
                         <AnimatePresence>
                           {openDropdown === index && (
                             <motion.div
-                              className="ml-4 overflow-hidden border-l border-white/20 pl-4"
+                              className="ml-4 mt-2 overflow-hidden rounded-lg border-l border-white/20 bg-gray-800/50 pl-4"
                               initial={{ height: 0, opacity: 0 }}
                               animate={{ height: "auto", opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}
@@ -755,7 +742,7 @@ const Header = () => {
                                 >
                                   <Link
                                     href={sub.path}
-                                    className="block rounded-lg px-2 py-2 text-base font-normal text-white transition-all duration-300 hover:bg-[#f5c034] hover:text-white"
+                                    className="mx-2 my-1 block rounded-lg px-3 py-3 text-base font-normal text-white transition-all duration-300 hover:bg-[#f5c034] hover:text-black"
                                     role="menuitem"
                                     tabIndex={0}
                                     onClick={() => setNavbarOpen(false)}
@@ -763,7 +750,9 @@ const Header = () => {
                                     <motion.span
                                       whileHover={{ x: 5 }}
                                       transition={{ duration: 0.2 }}
+                                      className="flex items-center"
                                     >
+                                      <div className="mr-3 h-2 w-2 rounded-full bg-[#f5c034] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                                       {sub.title}
                                     </motion.span>
                                   </Link>

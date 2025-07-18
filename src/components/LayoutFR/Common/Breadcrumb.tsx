@@ -12,7 +12,7 @@ const Breadcrumb = ({
 }) => {
   return (
     <>
-      <section className="relative z-10 -mb-24 mt-8 overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-900 pt-28 md:mb-10 lg:-mb-0 lg:pt-[150px]">
+      <section className="relative z-10 mt-8 overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-900 pb-8 pt-28 md:mb-10 lg:pb-16 lg:pt-[150px]">
         {/* Particules de fond */}
         <div className="absolute inset-0 overflow-hidden">
           {Array.from({ length: 12 }, (_, i) => (

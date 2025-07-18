@@ -3,34 +3,64 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 
-// Composant pour l'arrière-plan moderne avec les couleurs du site
-const ModernBackground = () => {
+// Composant pour l'arrière-plan holographique avec vagues animées
+const HolographicBackground = () => {
   return (
     <div className="absolute inset-0 overflow-hidden">
       {/* Gradient de base avec les couleurs du site */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black" />
 
-      {/* Formes géométriques subtiles avec les couleurs du site */}
+      {/* Vagues holographiques animées */}
       <div className="absolute inset-0">
         <motion.div
-          className="absolute -right-40 -top-40 h-80 w-80 rounded-full bg-gradient-to-br from-[#f5c034]/20 to-transparent"
+          className="absolute inset-0 opacity-20"
           animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-            rotate: [0, 180, 360],
+            y: [0, -20, 0],
+            x: [0, 10, 0],
           }}
           transition={{
             duration: 8,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-        />
+        >
+          <svg
+            className="h-full w-full"
+            viewBox="0 0 1200 800"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <motion.path
+              d="M0,400 C300,300 600,500 1200,400 L1200,800 L0,800 Z"
+              fill="url(#wave1)"
+              animate={{
+                d: [
+                  "M0,400 C300,300 600,500 1200,400 L1200,800 L0,800 Z",
+                  "M0,400 C300,500 600,300 1200,400 L1200,800 L0,800 Z",
+                  "M0,400 C300,300 600,500 1200,400 L1200,800 L0,800 Z",
+                ],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+            <defs>
+              <linearGradient id="wave1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#f5c034" stopOpacity="0.3" />
+                <stop offset="50%" stopColor="#eab308" stopOpacity="0.2" />
+                <stop offset="100%" stopColor="#f5c034" stopOpacity="0.3" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </motion.div>
+
         <motion.div
-          className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-gradient-to-tr from-[#eab308]/20 to-transparent"
+          className="absolute inset-0 opacity-15"
           animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.4, 0.2, 0.4],
-            rotate: [360, 180, 0],
+            y: [0, 20, 0],
+            x: [0, -10, 0],
           }}
           transition={{
             duration: 10,
@@ -38,56 +68,50 @@ const ModernBackground = () => {
             ease: "easeInOut",
             delay: 2,
           }}
-        />
-        <motion.div
-          className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r from-[#f5c034]/10 to-transparent"
-          animate={{
-            rotate: [0, 360],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
+        >
+          <svg
+            className="h-full w-full"
+            viewBox="0 0 1200 800"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <motion.path
+              d="M0,500 C400,400 800,600 1200,500 L1200,800 L0,800 Z"
+              fill="url(#wave2)"
+              animate={{
+                d: [
+                  "M0,500 C400,400 800,600 1200,500 L1200,800 L0,800 Z",
+                  "M0,500 C400,600 800,400 1200,500 L1200,800 L0,800 Z",
+                  "M0,500 C400,400 800,600 1200,500 L1200,800 L0,800 Z",
+                ],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1,
+              }}
+            />
+            <defs>
+              <linearGradient id="wave2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#eab308" stopOpacity="0.2" />
+                <stop offset="50%" stopColor="#f5c034" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="#eab308" stopOpacity="0.2" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </motion.div>
       </div>
 
-      {/* Particules flottantes animées */}
-      <div className="absolute inset-0">
-        {Array.from({ length: 15 }, (_, i) => (
-          <motion.div
-            key={i}
-            className="absolute h-1 w-1 rounded-full bg-[#f5c034]/40"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -100, -200, -300],
-              x: [0, Math.random() * 50 - 25, Math.random() * 100 - 50, 0],
-              opacity: [0, 1, 0.8, 0],
-              scale: [0, 1, 1.5, 0],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 10,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: Math.random() * 5,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Grille subtile animée */}
+      {/* Grille holographique 3D */}
       <motion.div
-        className="absolute inset-0 opacity-5"
+        className="absolute inset-0 opacity-10"
         animate={{
           x: [0, -50],
           y: [0, -50],
         }}
         transition={{
-          duration: 30,
+          duration: 20,
           repeat: Infinity,
           ease: "linear",
         }}
@@ -96,19 +120,59 @@ const ModernBackground = () => {
           className="h-full w-full"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(245, 192, 52, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(245, 192, 52, 0.1) 1px, transparent 1px)
+              linear-gradient(rgba(245, 192, 52, 0.3) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(245, 192, 52, 0.3) 1px, transparent 1px)
             `,
-            backgroundSize: "50px 50px",
+            backgroundSize: "60px 60px",
           }}
         />
       </motion.div>
+
+      {/* Particules holographiques flottantes */}
+      <div className="absolute inset-0">
+        {Array.from({ length: 20 }, (_, i) => (
+          <motion.div
+            key={i}
+            className="absolute h-2 w-2 rounded-full bg-gradient-to-r from-[#f5c034] to-[#eab308]"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -150, -300, -450],
+              x: [0, Math.random() * 100 - 50, Math.random() * 200 - 100, 0],
+              opacity: [0, 1, 0.8, 0],
+              scale: [0, 1, 1.5, 0],
+              rotate: [0, 180, 360],
+            }}
+            transition={{
+              duration: Math.random() * 15 + 15,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: Math.random() * 8,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Effet de lueur holographique */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-r from-[#f5c034]/5 via-transparent to-[#eab308]/5"
+        animate={{
+          opacity: [0.3, 0.6, 0.3],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
     </div>
   )
 }
 
-// Composant pour les cartes avec images très visibles et animations sophistiquées
-const GlassmorphismCard = ({ slide, isActive, index }) => {
+// Composant pour les cartes avec effet de profondeur 3D et holographie
+const HolographicCard = ({ slide, isActive, index }) => {
   return (
     <motion.div
       className={`absolute inset-0 overflow-hidden rounded-3xl ${
@@ -150,14 +214,14 @@ const GlassmorphismCard = ({ slide, isActive, index }) => {
           transition={{ duration: 0.8 }}
         />
 
-        {/* Effet de lueur subtil */}
+        {/* Effet holographique sur l'image */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-[#f5c034]/5 via-transparent to-[#eab308]/5"
+          className="absolute inset-0 bg-gradient-to-r from-[#f5c034]/10 via-transparent to-[#eab308]/10"
           animate={{
-            opacity: [0.3, 0.6, 0.3],
+            opacity: [0.2, 0.4, 0.2],
           }}
           transition={{
-            duration: 4,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -355,70 +419,8 @@ const GlassmorphismCard = ({ slide, isActive, index }) => {
   )
 }
 
-// Navigation circulaire moderne avec les couleurs du site et animations
-const ModernNavigation = ({ slides, currentIndex, goToSlide }) => {
-  return (
-    <motion.div
-      className="absolute right-8 top-1/2 z-20 -translate-y-1/2"
-      initial={{ opacity: 0, x: 50 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8, delay: 1 }}
-    >
-      <div className="flex flex-col gap-4">
-        {slides.map((_, index) => (
-          <motion.button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={`group relative ${index === currentIndex ? "z-10" : ""}`}
-            whileHover={{
-              scale: 1.3,
-              rotateY: 180,
-            }}
-            whileTap={{ scale: 0.8 }}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{
-              opacity: 1,
-              scale: 1,
-              transition: { delay: 1.2 + index * 0.1 },
-            }}
-          >
-            <motion.div
-              className={`h-4 w-4 rounded-full border-2 transition-all duration-300 ${
-                index === currentIndex
-                  ? "border-[#f5c034] bg-[#f5c034]"
-                  : "border-white/30 bg-white/10 backdrop-blur-sm hover:border-white/60"
-              }`}
-              whileHover={{
-                boxShadow:
-                  index === currentIndex
-                    ? "0 0 20px rgba(245, 192, 52, 0.6)"
-                    : "0 0 15px rgba(255, 255, 255, 0.3)",
-              }}
-            />
-
-            {index === currentIndex && (
-              <motion.div
-                className="absolute inset-0 -m-2 rounded-full border border-[#f5c034]/50"
-                animate={{
-                  scale: [1, 1.8, 1],
-                  opacity: [0.5, 0, 0.5],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-            )}
-          </motion.button>
-        ))}
-      </div>
-    </motion.div>
-  )
-}
-
-// Indicateur de progression moderne avec les couleurs du site et animations
-const ModernProgress = ({ currentIndex, totalSlides }) => {
+// Indicateur de progression holographique avec les couleurs du site et animations
+const HolographicProgress = ({ currentIndex, totalSlides }) => {
   return (
     <motion.div
       className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2"
@@ -428,7 +430,7 @@ const ModernProgress = ({ currentIndex, totalSlides }) => {
     >
       <div className="flex items-center gap-4">
         <motion.div
-          className="h-1 w-32 overflow-hidden rounded-full bg-white/20 backdrop-blur-sm"
+          className="h-2 w-40 overflow-hidden rounded-full bg-white/20 backdrop-blur-sm"
           whileHover={{ scale: 1.1 }}
           transition={{ duration: 0.3 }}
         >
@@ -438,13 +440,13 @@ const ModernProgress = ({ currentIndex, totalSlides }) => {
             animate={{ width: `${((currentIndex + 1) / totalSlides) * 100}%` }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
             style={{
-              boxShadow: "0 0 10px rgba(245, 192, 52, 0.5)",
+              boxShadow: "0 0 15px rgba(245, 192, 52, 0.6)",
             }}
           />
 
-          {/* Effet shimmer */}
+          {/* Effet shimmer holographique */}
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
             animate={{
               x: ["-100%", "200%"],
             }}
@@ -564,13 +566,13 @@ const LastHero = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      {/* Arrière-plan moderne */}
-      <ModernBackground />
+      {/* Arrière-plan holographique */}
+      <HolographicBackground />
 
       {/* Conteneur des cartes */}
       <div className="relative h-full w-full">
         {slides.map((slide, index) => (
-          <GlassmorphismCard
+          <HolographicCard
             key={slide.id}
             slide={slide}
             isActive={index === currentIndex}
@@ -579,15 +581,11 @@ const LastHero = () => {
         ))}
       </div>
 
-      {/* Navigation */}
-      <ModernNavigation
-        slides={slides}
+      {/* Indicateur de progression holographique */}
+      <HolographicProgress
         currentIndex={currentIndex}
-        goToSlide={goToSlide}
+        totalSlides={slides.length}
       />
-
-      {/* Indicateur de progression */}
-      <ModernProgress currentIndex={currentIndex} totalSlides={slides.length} />
     </motion.div>
   )
 }
