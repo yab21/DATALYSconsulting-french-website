@@ -1,6 +1,5 @@
 "use client"
 import Link from "next/link"
-import { Button } from "@nextui-org/button"
 
 const Footer = () => {
   return (
@@ -83,8 +82,8 @@ const Footer = () => {
                       href="/contact"
                       className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
                     >
-                      Siège social <span className="uppercase">rci </span>:
-                      Rivera Faya, Face du Collège Jules Vernes
+                      Siège social <span className="uppercase">rci</span>:
+                      Cocody - Angré 7ème Tranche Rue L155
                     </Link>
                   </li>
                   <li>
